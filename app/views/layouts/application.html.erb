@@ -1,24 +1,28 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>RecipeApp</title>
+    <title>Recipe</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" 
+    rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" 
+    crossorigin="anonymous">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag "https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" , "data-turbo-track": "reload" %>
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
-   
     <%= javascript_importmap_tags %>
-    <script>
-    window.onhashchange = function() {
-      console.log("Load")
-      location.reload();
-    };
-  </script>
   </head>
 
   <body>
+  <% if current_user %>
+      <%= render partial: "shared/navbar" %>
+    <%end%>
     <%= yield %>
+    <p class="notice"><%= notice %></p> 
+    <p class="alert"><%= alert %></p>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" 
+    integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" 
+    crossorigin="anonymous"></script>
   </body>
 </html>

@@ -1,38 +1,43 @@
 class RecipesController < ApplicationController
-  before_action :authenticate_user!
-
   def index
-    @recipes = current_user.recipes.all
+    @recipes = current_user.recipes
   end
 
   def show
-    @recipe = Recipe.find_by(id: params[:id])
-    authorize! :read, @recipe
-  rescue StandardError
-    flash.now[:notice] = 'You do not have the necessary permissions to view this page.'
-    render('recipes/error')
+    @recipe = Recipe.find(params[:id])
+    @foods = current_user.foods.all
+    @recipe_food = RecipeFood.find_by(recipe_id: params[:id])
+  end
+
+  def new
+    @recipe = Recipe.new
   end
 
   def create
-    recipe = params[:recipe]
-    recipe['user'] = current_user
-    params.permit!
-    Recipe.create(recipe)
-    redirect_to '/recipes'
+    @recipe = current_user.recipes.new(recipe_params)
+    if @recipe.save
+      redirect_to user_recipe_path(@recipe.user_id, @recipe.id)
+    else
+      render :new
+    end
   end
 
   def destroy
-    @recipe = Recipe.find_by(id: params[:id])
-    authorize! :destroy, @recipe
-    fdr = @recipe.recipe_foods.where(recipe_id: @recipe.id)
-    fdr.destroy_all
+    @recipe = Recipe.find params[:id]
     @recipe.destroy
-    redirect_to '/index'
+    redirect_to user_recipes_path(@recipe.user_id)
   end
 
-  def update
-    @recipe = Recipe.find_by(id: params[:id])
-    @recipe.public = !@recipe.public
-    @recipe.save
+  def public_recipes
+    @recipes = Recipe.where(public: true)
+  end
+
+  private
+
+  def recipe_params
+    params
+      .require(:recipe)
+      .permit(:name, :description, :public, :preparation_time, :cooking_time)
+      .merge(user_id: params[:user_id])
   end
 end

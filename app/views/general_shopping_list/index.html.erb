@@ -1,0 +1,22 @@
+<%= render "forms/navbar"%>
+<div class="recipe-detail">
+        <h2 class="recipe-title">Shopping List</h2>
+        <div class="detail-item">
+                        <p>Amount of food items to buy: <%= @recipe.recipe_foods.count %> </p>
+                        <P>Total value of food needed: $<%= @amount %></P>
+            </div>
+        <table>
+                    <tr>
+                        <th>Foods</th>
+                        <th>Quantity</th>
+                        <th>Value</th>
+                    </tr>
+                <%@recipe.recipe_foods.each do |food| %>
+                        <tr>
+                            <td><%= food.food.name %></td>
+                            <td><%= food.food.quantity %> <%= food.food.measurement_unit %></td>
+                            <td>$<%= food.food.price.to_i * food.food.quantity.to_i %></td>
+                        </tr>
+                <%end%>
+        </table>
+</div>

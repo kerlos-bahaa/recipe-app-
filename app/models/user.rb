@@ -4,6 +4,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  has_many :recipes, foreign_key: :author_id
-  has_many :foods, foreign_key: :owner_id
+  has_many :foods
+  has_many :recipes
+
+  validates :name, presence: true
 end

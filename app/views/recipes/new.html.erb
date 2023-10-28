@@ -1,11 +1,30 @@
-<div class="container mt-5">
-  <h1>New recipe</h1>
-
-  <%= render "form", recipe: @recipe %>
-
-  <br>
-
-  <div>
-    <%= link_to "Back to recipes", recipes_path %>
+<%= render "forms/navbar"%>
+<%= form_with(model: Recipe , url: "/recipes" ) do |f| %> 
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name, autofocus: true %>
   </div>
-</div>
+
+  <div class="field">
+    <%= f.label :preparation %><br />
+    <%= f.text_field :preperation_time , autofocus: true%>
+  </div>
+
+  <div class="field">
+    <%= f.label :cooking_time %><br />
+    <%= f.number_field :cooking_time , autofocus: true%>
+  </div>
+
+  <div class="field">
+    <%= f.label :description %><br />
+    <%= f.text_area :description , autofocus: true%>
+  </div>
+
+  <div class="custom-control custom-switch publi-switch">
+            <%= f.check_box :public, class: "custom-control-input", id: "customSwitch1" , autofocus: true %>
+            <label class="custom-control-label" for="customSwitch1">Public </label>
+    </div>
+  <div class="actions">
+    <%= f.submit "Add Recipe" %>
+  </div>
+<% end %>

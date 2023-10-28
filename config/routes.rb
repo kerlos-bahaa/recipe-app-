@@ -1,18 +1,12 @@
 Rails.application.routes.draw do
-  devise_for :users
+  devise_for :users , path:'/' #, path_name:{sign_in: 'login' , sign_out: 'logout' , sign_up: 'sign_up'}
+  root to: 'recipes#index'
 
-  resources :recipes
-  resources :foods
-  resources :public_recipes
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
-  devise_scope :user do
-    delete '/users/sign_out', to: 'devise/sessions#destroy'
+  get '/general_shopping_list' , to: 'general_shopping_list#index'
+  get '/public_recipes' , to: 'public_recipes#index'
+
+  resources :recipes, :foods do
+    resources :recipe_foods
   end
 
-
-  # Defines the root path route ("/")
-  root to: 'home#index'
-  get '/shoppings/:id', to: 'shoppings#index', as: 'shopping'
-  get '/shoppings', to: 'shoppings#all', as: 'shoppings'
-  delete '/ingredients/:id', to: 'recipes#destroy_ingredient', as: 'destroy_ingredient'
 end

@@ -1,0 +1,292 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Gothic+A1:wght@400&family=Montserrat&family=Nunito&family=Orbitron&family=Rajdhani:wght@400&family=Roboto+Slab:wght@400&family=Saira:wght@400&display=swap');
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.field input {
+  width: 30vw;
+  padding: 10px;
+  border-radius: 5px;
+  object-fit: contain;
+  border-color: #e2e2e2;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 30vw;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.links {
+  width: 100%;
+}
+
+#name {
+  padding: 10px;
+  width: 30vw;
+  border-radius: 5px;
+  color: rgb(111, 111, 233);
+  border-color: #e2e2e2;
+}
+
+.actions input {
+  padding: 10px;
+  width: 30vw;
+  border-radius: 5px;
+  background-color: rgb(111, 111, 233);
+  color: white;
+  border: none;
+}
+
+h2 {
+  color: rgb(111, 111, 233);
+}
+
+.links a {
+  text-decoration: none;
+  color: rgb(111, 111, 233);
+  font-weight: bolder;
+  margin-bottom: 5px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.alert {
+  color: rgb(255, 50, 50);
+  font-weight: bolder;
+}
+
+.err li {
+  list-style: none;
+}
+
+.err {
+  width: 30vw;
+  border: 1px solid rgb(255, 255, 255);
+  color: white;
+  background-color: rgb(236, 105, 105);
+  padding: 10px;
+  border-radius: 3px;
+  animation-name: example;
+  animation-duration: 4s;
+}
+
+@keyframes example {
+  0% { background-color: rgb(255, 255, 255); }
+  25% { background-color: rgb(255, 171, 171); }
+  50% { background-color: rgb(252, 128, 128); }
+  100% { background-color: rgb(236, 105, 105); }
+}
+
+.recipes-list {
+  width: 80vw;
+  padding: 10px;
+}
+
+.recipe-item {
+  font-family: 'Gothic A1', sans-serif;
+  font-family: 'Montserrat', sans-serif;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 30px;
+  margin-top: 20px;
+  padding: 10px;
+  border: 2px solid rgb(248, 162, 162);
+  border-radius: 3px;
+}
+
+.recipe-item-para {
+  font-family: 'Gothic A1', sans-serif;
+  font-family: 'Montserrat', sans-serif;
+  font-family: 'Nunito', sans-serif;
+  font-family: 'Orbitron', sans-serif;
+  font-family: 'Rajdhani', sans-serif;
+  font-family: 'Roboto Slab', serif;
+  font-family: 'Saira', sans-serif;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 30px;
+}
+
+.recipe-h3-link a {
+  color: rgb(111, 111, 233);
+  text-decoration: none;
+}
+
+.remove a {
+  color: red;
+}
+
+.recipe-item-para button {
+  padding: 10px;
+  border-radius: 5px;
+  background-color: rgb(111, 111, 233);
+  border: none;
+}
+
+.remove-modify a {
+  color: rgb(111, 111, 233);
+  text-decoration: none;
+  font-weight: 600;
+  margin-left: 5px;
+  padding: 4px;
+  border-radius: 5px;
+}
+
+.realroot a {
+  color: white;
+  padding: 5px;
+}
+
+.recipe-item-para button a {
+  color: white;
+  text-decoration: none;
+}
+
+.recipe-title {
+  font-family: 'Gothic A1', sans-serif;
+  font-family: 'Montserrat', sans-serif;
+  font-family: 'Nunito', sans-serif;
+  font-family: 'Orbitron', sans-serif;
+  font-family: 'Rajdhani', sans-serif;
+  font-family: 'Roboto Slab', serif;
+  font-family: 'Saira', sans-serif;
+}
+
+.recipe-detail {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 80vw;
+  padding: 10px;
+  gap: 20px;
+}
+
+.detail-item {
+  font-family: 'Gothic A1', sans-serif;
+  font-family: 'Montserrat', sans-serif;
+  padding: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 80vw;
+}
+
+.rcp-step {
+  font-size: large;
+  font-weight: bolder;
+}
+
+.buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 80vw;
+  padding: 10px;
+}
+
+.buttons button {
+  padding: 10px;
+  border-radius: 5px;
+  background-color: rgb(111, 111, 233);
+  border: none;
+}
+
+.buttons button a {
+  text-decoration: none;
+  color: white;
+}
+
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td,
+th {
+  border: 1px solid #ddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #ddd;
+}
+
+.cust {
+  margin-top: 50px;
+  padding: 20px;
+}
+
+.li-foo {
+  margin-top: 20px;
+  margin-bottom: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+
+#recipe_description {
+  padding: 10px;
+  width: 30vw;
+  height: 25vh;
+}
+
+.publi-switch {
+  align-self: flex-start;
+}
+
+.nava {
+  color: white;
+  width: 80vw;
+  padding: 10px;
+  background-color: rgb(111, 111, 233);
+  margin-bottom: 20px;
+}
+
+.button_to {
+  width: 0;
+  margin-right: 60px;
+}
+
+.button_to button {
+  padding: 10px;
+  border-radius: 5px;
+  background-color: rgb(255, 255, 255);
+  color: red;
+  font-weight: 600;
+  border: none;
+}
+
+.nava h1 {
+  font-family: 'Orbitron', sans-serif;
+  font-family: 'Rajdhani', sans-serif;
+  font-family: 'Roboto Slab', serif;
+  font-family: 'Saira', sans-serif;
+  font-size: larger;
+  font-weight: bolder;
+}

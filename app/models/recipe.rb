@@ -1,9 +1,11 @@
 class Recipe < ApplicationRecord
-  belongs_to :author, class_name: 'User'
-  has_many :ingredients, dependent: :delete_all
-  has_many :foods, through: :ingredients
-  accepts_nested_attributes_for :ingredients, allow_destroy: true, reject_if: :all_blank
+  has_many :recipe_foods
+  belongs_to :user, class_name: 'User'
+  has_many :foods, through: :recipe_foods
 
-  validates :name, :preparation_time, :cooking_time, presence: true
-  validates :preparation_time, :cooking_time, numericality: { only_integer: true }
+  validates :name, presence: true
+  validates :preperation_time, presence: true
+  validates :cooking_time, presence: true
+  validates :public, inclusion: [true, false]
+  validates :public, exclusion: [nil]
 end

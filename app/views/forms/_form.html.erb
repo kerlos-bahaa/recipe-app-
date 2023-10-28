@@ -1,0 +1,14 @@
+
+
+<%= form_with(model: @recipe.foods.includes(:user) , url: "/recipes/#{@recipe.id}/recipe_foods" ) do |f| %> 
+  <%= select_tag(:name, options_for_select(current_user.foods.map { |food| [food.name, food.id] })) %>
+
+  <div class="field">
+    <%= f.label :Quantity %><br />
+    <%= f.number_field :quantity %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Add Food" %>
+  </div>
+<% end %>

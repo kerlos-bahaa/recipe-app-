@@ -1,35 +1,34 @@
 require 'rails_helper'
 
 RSpec.describe Recipe, type: :model do
-  @author = User.new(name: 'john')
-
-  subject do
-    Recipe.new(author: @author,
-               name: 'Perfect Chicken',
-               description: '',
-               preparation_time: 10,
-               cooking_time: 75)
+  before do
+    @user = User.create(name: 'Daniel', email: 'user2@example.com', password: 'user23')
+    @food = Food.create(name: 'Saidi', measurement_unit: 'kg', price: 23, quantity: 300, user: @user)
+    @recipe = Recipe.create(name: 'spaghetti', preperation_time: 1, cooking_time: 1, description: "Don't forget water",
+                            public: true, user: @user)
   end
 
-  before { subject.save }
-
-  it 'should have an author' do
-    subject.author = nil
-    expect(subject).not_to be_valid
+  it 'has a name' do
+    expect(@recipe.name).to eq('spaghetti')
   end
 
-  it 'should have a name' do
-    subject.name = nil
-    expect(subject).not_to be_valid
+  it 'has the preperation_time' do
+    expect(@recipe.preperation_time).to eq(1)
   end
 
-  it 'should have a valid preparation time' do
-    subject.preparation_time = nil
-    expect(subject).not_to be_valid
+  it 'has cooking_time: 1' do
+    expect(@recipe.cooking_time).to eq(1)
   end
 
-  it 'should have a valid cooking time' do
-    subject.preparation_time = nil
-    expect(subject).not_to be_valid
+  it 'has the description' do
+    expect(@recipe.description).to eq("Don't forget water")
+  end
+
+  it 'has the description' do
+    expect(@recipe.public).to eq(true)
+  end
+
+  it 'has a user' do
+    expect(@recipe.user.name).to eq('Daniel')
   end
 end

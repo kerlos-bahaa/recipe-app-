@@ -1,0 +1,27 @@
+
+
+<%= form_with(model: @foods , url: "/foods" ) do |f| %> 
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name, autofocus: true %>
+  </div>
+
+  <div class="field">
+    <%= f.label :Unit %><br />
+    <%= f.text_field :measurement_unit %>
+  </div>
+
+  <div class="field">
+    <%= f.label :Price %><br />
+    <%= f.number_field :price %>
+  </div>
+
+  <div class="field">
+    <%= f.label :Quantity %><br />
+    <%= f.number_field :quantity %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Add Food" %>
+  </div>
+<% end %>

@@ -1,10 +1,16 @@
-<%= render "menu/menu" %>
-<h1 class='text-center text-info my-3 mx-5'>Public Recipes</h1>
-
-<div id="recipes">
-  <% @public.each do |recipe| %>
-    <%= link_to recipe_path(recipe) do %>
-      <%= render partial: 'recipe', locals: { recipe: recipe } %>
-    <% end %>
-  <% end %>
+<%= render "forms/navbar"%>
+<div class="recipes-list">
+    <ul class= "recipe-item-list">
+        <% @public_recipes.each do |recipe| %>
+            <li class="recipe-item">
+                <div class="recipe-item-para">
+                    <h3 class="recipe-h3-link"> <%= link_to recipe.name , "recipes/#{recipe.id}"%> </h3>
+                    <p>By <%= recipe.user.name%></p>
+                </div>
+                <div>
+                    <p> <%= recipe.description%></p>
+                </div>
+            </li>
+        <%end%>
+    </ul>
 </div>

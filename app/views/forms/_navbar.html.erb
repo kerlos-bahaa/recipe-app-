@@ -1,0 +1,12 @@
+<div class="pos-f-t">
+      <nav class="navbar navbar-dark nava">
+        <h1>Recipe App</h1>
+        <div class="realroot">
+           <%= link_to "New recipe" , new_recipe_path%>
+           <%= link_to "Recipes" , recipes_path %>
+           <%= link_to "Foods" , foods_path %>
+           <%= link_to "Public recipes" , public_recipes_path %>
+        </div>
+        <%= button_to "Logout", destroy_user_session_path, :method => 'delete', data:{turbo: "false"} %>
+      </nav>
+</div>

@@ -1,29 +1,22 @@
-<p style="color: green"><%= notice %></p>
-
-<h1 class="mx-3 ">Foods</h1>
-<div class="d-flex justify-content-end">
-  <%= link_to "Add Food", new_food_path, class: "btn btn-success mx-5 "  %>
-</div>
-
-<div id="foods">
-  <table class="table table-bordered m-3">
-    <tbody >
-      <tr>
-        <th class="text-primary display-6" colspan="6">Food</th>
-        <th class="text-primary " colspan="6">Measurement unit</th>
-        <th class="text-primary " colspan="6">Price</th>
-        <th class="text-primary " colspan="6">Quantity</th>
-        <th class="text-primary " colspan="6">Action</th>
-      </tr>
-      <% @foods.each do |food| %>
+<%= render "forms/navbar"%>
+<div class="list-food">
+     <div class="buttons li-foo">
+    <button><%= link_to "Add Food" , new_food_path %></button>
+    </div>
+    <table>
         <tr>
-          <td colspan="6"><%= food.name %></td>
-          <td colspan="6"><%= food.measurement_unit %></td>
-          <td colspan="6">$ <%= food.price %></td>
-          <td colspan="6"><%= food.quantity %></td>
-          <td colspan="6"><%= link_to "Remove", food_path(food.id), data: { turbo_method: :delete }, class: "btn btn-danger" %></td>
+            <th>Foods</th>
+            <th>Quantity</th>
+            <th>Action</th>
         </tr>
-      <% end %>
-    </tbody>
-  </table>
+            <%@foods.each do |food| %>
+                    <tr>
+                        <td><%= food.name %></td>
+                        <td><%= food.quantity %> <%= food.measurement_unit %></td>
+                        <td class="remove-modify">
+                        <span class="remove"><%= link_to "Delete" , url_for(action: 'destroy' , id: food.id ) , data: {turbo_method: :delete}%></span>
+                        </td>
+                    </tr>
+            <%end%>
+    </table>
 </div>
